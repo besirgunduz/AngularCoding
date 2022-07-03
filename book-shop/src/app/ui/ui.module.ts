@@ -9,8 +9,13 @@ import { ComponentsModule } from './components/components.module';
   declarations: [],
   imports: [
     CommonModule,
-    LayoutModule,
-    ComponentsModule
+    ComponentsModule,
+    LayoutModule
+  ],
+  exports:[
+    CommonModule,
+    ComponentsModule,
+    LayoutModule
   ]
 })
 export class UiModule { }
