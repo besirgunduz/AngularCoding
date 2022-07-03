@@ -3,11 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { BooksComponent } from './ui/components/books/books.component';
 import { HomeComponent } from './ui/components/home/home.component';
 import { LayoutComponent } from './ui/layout/layout.component';
+import { AuthGuard } from './ui/login/guard/auth.guard';
+import { LoginComponent } from './ui/login/login.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: LayoutComponent,
+    component: LayoutComponent,canActivateChild: [AuthGuard],
     children: [
       {
         path: '',
@@ -19,10 +21,17 @@ const routes: Routes = [
         path: 'book',
         component: BooksComponent,
         loadChildren: () =>
-          import('./ui/components/books/books.module').then((m) => m.BooksModule
+          import('./ui/components/books/books.module').then(
+            (m) => m.BooksModule
           ),
       },
     ],
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+    loadChildren: () =>
+      import('./ui/login/login.module').then((m) => m.LoginModule),
   },
 ];
 
