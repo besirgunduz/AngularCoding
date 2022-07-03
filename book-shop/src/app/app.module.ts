@@ -6,15 +6,11 @@ import { AppComponent } from './app.component';
 import { UiModule } from './ui/ui.module';
 
 @NgModule({
-  declarations: [
-    AppComponent
+  declarations: [AppComponent],
+  imports: [BrowserModule, AppRoutingModule, UiModule],
+  providers: [
+    { provide: 'apiUrl', useValue: 'https://webapi.angulareducation.com/api/' },
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    UiModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
