@@ -8,14 +8,11 @@ import { AuthService } from './service/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  email:string="asdasd";
-  password:string="sdsa";
+  constructor(private authService: AuthService) { }
 
-  constructor(private authService: AuthService) {}
+  ngOnInit(): void { }
 
-  ngOnInit(): void {}
-
-  login(form:any){
+  login(form: any) {
     console.log(form.value);
     this.authService.login(form.value);
   }
