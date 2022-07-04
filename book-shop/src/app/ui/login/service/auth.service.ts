@@ -11,17 +11,16 @@ export class AuthService {
     @Inject('apiUrl') private apiUrl: string,
     private httpClient: HttpClient,
     private router: Router
-  ) {}
+  ) { }
 
   login(loginModel: LoginModel) {
     let api = this.apiUrl + 'users/login';
     this.httpClient.post(api, loginModel).subscribe(
       (response: any) => {
-        debugger;
         localStorage.setItem('token', response.data.token);
         this.router.navigate(["/"])
       },
-      (error) => {}
+      (error) => { }
     );
   }
 }
