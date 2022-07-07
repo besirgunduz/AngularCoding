@@ -9,6 +9,9 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgxSpinnerModule } from "ngx-spinner";
 
 import { ToastrModule } from 'ngx-toastr';
+import { FormsModule } from '@angular/forms';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './ui/login/interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,6 +21,7 @@ import { ToastrModule } from 'ngx-toastr';
     UiModule,
     BrowserAnimationsModule,
     NgxSpinnerModule,
+    FormsModule,
     ToastrModule.forRoot({
       closeButton: true,
       progressBar: true
@@ -25,6 +29,7 @@ import { ToastrModule } from 'ngx-toastr';
   ],
   providers: [
     { provide: 'apiUrl', useValue: 'https://webapi.angulareducation.com/api/' },
+    {provide: HTTP_INTERCEPTORS,useClass: AuthInterceptor,multi:true}
   ],
   bootstrap: [AppComponent],
 })
